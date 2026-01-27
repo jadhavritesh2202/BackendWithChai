@@ -19,8 +19,8 @@ const uploadOnCloudinary = async (localFilePath) => {
     });
 
     // File successfully uploaded → local file delete
-  //   fs.unlinkSync(localFilePath);
-    console.log("file is uploadede on cloudinary",response.url)
+    fs.unlinkSync(localFilePath);
+    // console.log("file is uploadede on cloudinary",response.url)
     return response; // contains url, public_id, etc.
   } catch (error) {
     // Agar upload fail ho jaye → local file delete

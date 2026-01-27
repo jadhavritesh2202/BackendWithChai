@@ -53,11 +53,11 @@ const userSchema=new Schema(
     }
 )
 //Password ko database me save hone se pehle hash karta hai automatically
-userSchema.pre("save",async function(next){
-    if(!this.isModified("password")) return next();
-    this.password=await bcrypt.hash(this.password,10)
-    next()
-})
+userSchema.pre("save", async function () {
+  if (!this.isModified("password")) return;
+
+  this.password = await bcrypt.hash(this.password, 10);
+});
 
 /*Login ke time user ke input password ko database me stored hash ke saath compare karna
 Return true ya false
